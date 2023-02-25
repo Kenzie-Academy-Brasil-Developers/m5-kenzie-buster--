@@ -1,11 +1,11 @@
 from rest_framework.views import APIView, Request, Response, status
-from .serializers import UserSerializer, CustomJWTSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated
-from .permissions import UsersDetailsPermission
-from django.shortcuts import get_object_or_404
 from .models import User
+from .serializers import UserSerializer, JWTSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.shortcuts import get_object_or_404
+from .permissions import UsersDetailsPermission
 
 
 class UsersView(APIView):
@@ -41,4 +41,4 @@ class UsersDetailView(APIView):
         return Response(serializer.data, status.HTTP_200_OK)
 
 class UsersLoginView(TokenObtainPairView):
-    serializer_class = CustomJWTSerializer
+    serializer_class = JWTSerializer
