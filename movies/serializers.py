@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from accounts.models import User
 from .models import Movie, MovieOrder, RatingChoices
+from accounts.models import User
 
 
 class MovieSerializer(serializers.Serializer):
